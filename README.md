@@ -4,13 +4,14 @@
 This Interviewer Scheduler allows students to choose when they have their interview (day and time) and who they want to conduct their interview. Students can cancel their existing appointment and reschedule. They can also edit their appointment (change name and interviewer).
 
 ## Final Product
-Creating an appointment
+
+#### Creating an appointment
 ![Alt Text](https://github.com/rahleak/scheduler-assignment/blob/master/SCHEDULERGIFS/CREATEAPP.gif)
 
-Editing an appointment
+#### Editing an appointment
 ![Alt Text](https://github.com/rahleak/scheduler-assignment/blob/master/SCHEDULERGIFS/EDITAPP.gif)
 
-Cancelling an appointment
+#### Cancelling an appointment
 ![Alt Text](https://github.com/rahleak/scheduler-assignment/blob/master/SCHEDULERGIFS/DELETEAPP.gif)
 
 ## Setup
