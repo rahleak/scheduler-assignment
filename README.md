@@ -14,24 +14,9 @@ This Interviewer Scheduler allows students to choose when they have their interv
 #### Cancelling an appointment
 ![Alt Text](https://github.com/rahleak/scheduler-assignment/blob/master/SCHEDULERGIFS/DELETEAPP.gif)
 
-## Setup
-
-Install dependencies with `npm install`.
-
-## Running Webpack Development Server
-
-```sh
-npm start
-```
-
-## Running Jest Test Framework
-
-```sh
-npm test
-```
-
-## Running Storybook Visual Testbed
-
-```sh
-npm run storybook
-```
+## Getting Started
+* Install dependencies with the command npm install
+* Run the Webpack Development Server with the command npm start
+* Run the API server with the command npm start while in the API directory
+* Run the Jest Test Framework with the command npm test
+* Run the Storybook Visual Testbed with the command npm run storybook

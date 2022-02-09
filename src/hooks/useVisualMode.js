@@ -8,8 +8,9 @@ export function useVisualMode(initial) {
 
     if (replace) {
       setMode(newMode)
-      history.pop()
-      setHistory([...history, newMode])
+      let newHistory = history
+      newHistory.pop()
+      setHistory([...newHistory, newMode])
     } else {
       setMode(newMode)
       setHistory([...history, newMode])

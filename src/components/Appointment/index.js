@@ -78,7 +78,7 @@ function removeInterview() {
       {mode === CREATE && (
         <Form
           interviewers={interviewers}
-          onCancel={() => back(EMPTY)}
+          onCancel={back}
           onSave={save}
           interview={interview}
         />
@@ -87,7 +87,7 @@ function removeInterview() {
       {mode === CONFIRM && (
         <Confirm 
           message={"Delete the appointment?"}
-          onCancel={() => back(SHOW)}
+          onCancel={back}
           onConfirm={() => removeInterview()}
         />
       )}
@@ -98,7 +98,7 @@ function removeInterview() {
         interviewers={interviewers}
         interview={interview}
         onSave={save}
-        onCancel={() => back(EMPTY)}
+        onCancel={back}
         />
       )}
       {mode === ERROR_SAVE && (
@@ -110,7 +110,7 @@ function removeInterview() {
       {mode === ERROR_DELETE && (
         <Error 
           message={"Could not delete appointment"}
-          onClose={() => back(SHOW)}
+          onClose={() => back(CONFIRM)}
         />
       )}
     </article>
