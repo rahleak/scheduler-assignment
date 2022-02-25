@@ -1,7 +1,7 @@
 import React from "react";
 
 export default function Show(props) {
-  const { interviewer, student, onEdit, onDelete } = props;
+  const { interviewer, student, onEdit, onDelete, setDays } = props;
 
 
   return (
@@ -25,7 +25,9 @@ export default function Show(props) {
         className="appointment__actions-button"
         src="images/trash.png"
         alt="Delete"
-        onClick={() => onDelete(interviewer.name)}
+        onClick={() => {
+          onDelete(interviewer.name)
+        }}
       />
     </section>
   </section>

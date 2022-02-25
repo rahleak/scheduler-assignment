@@ -11,7 +11,7 @@ import 'components/Appointment/styles.scss'
 
 
 export default function Appointment(props) {
-const { time, interview, interviewers, bookInterview, id, cancelInterview } = props;
+const { time, interview, interviewers, bookInterview, id, cancelInterview, setDays } = props;
   const EMPTY = "EMPTY";
   const SHOW = "SHOW";
   const CREATE = "CREATE";
@@ -51,6 +51,7 @@ function removeInterview() {
   cancelInterview(id)
   .then(() => {
     transition(EMPTY)
+    setDays()
   })
   .catch((err) => {
     console.error(err)
@@ -72,23 +73,26 @@ function removeInterview() {
           student={interview.student}
           interviewer={interview.interviewer}
           onDelete={() => transition(CONFIRM)}
-          onEdit={() => transition(EDIT)} 
-        />
-      )}
+          onEdit={() => transition(EDIT)}
+          />
+          )}
       {mode === CREATE && (
         <Form
-          interviewers={interviewers}
-          onCancel={back}
-          onSave={save}
-          interview={interview}
+        interviewers={interviewers}
+        onCancel={back}
+        onSave={save}
+        interview={interview}
         />
-      )}
+        )}
       {mode === SAVING && <Status message={SAVING} />}
       {mode === CONFIRM && (
         <Confirm 
-          message={"Delete the appointment?"}
-          onCancel={back}
-          onConfirm={() => removeInterview()}
+        message={"Delete the appointment?"}
+        onCancel={back}
+        onConfirm={() => {
+          removeInterview()
+          setDays()
+        }}
         />
       )}
       {mode === DELETING && <Status message={DELETING} />}
@@ -110,7 +114,7 @@ function removeInterview() {
       {mode === ERROR_DELETE && (
         <Error 
           message={"Could not delete appointment"}
-          onClose={() => back(CONFIRM)}
+          onClose={() => transition(SHOW)}
         />
       )}
     </article>

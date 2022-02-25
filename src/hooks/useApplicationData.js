@@ -12,6 +12,14 @@ export function useApplicationData(params) {
     setState(state => ({ ...state, day }));
   }
 
+  const setDays = () => {
+    console.log("this function starts")
+    return axios.get("/api/days").then((daysResponse) =>  {
+      console.log("daysResponse: ", daysResponse.data)
+      setState(prev => ({ ...prev, days: daysResponse.data }));
+    })
+  }
+
   function bookInterview(id, interview) {
     const appointment = {
       ...state.appointments[id],
@@ -75,15 +83,15 @@ export function useApplicationData(params) {
       }
     }
 
-    function formatSpots(spots) {
+    let formatSpots = (spots) => {
       if (spots === 0) return  "no spots remaining";
       if (spots === 1) return `1 spot remaining`;
       if (spots > 1) return `${spots} spots remaining`;
     }
 
-    function updateSpots(appointments) {
+    let updateSpots = (appointments) => {
     //   // setState()
-      const newDays = [...state.days]
+      let newDays = [...state.days]
 
       for (const day of newDays) {
         if (day.name === state.day) {
@@ -99,6 +107,8 @@ export function useApplicationData(params) {
       return newDays;
     }
 
+
+
     useEffect(() => {
 
       Promise.all([
@@ -108,10 +118,10 @@ export function useApplicationData(params) {
       ]).then((all) => {
         const [days, appointments, interviewers] = all;
         setState(prev => ({ ...prev, days: days.data, appointments: appointments.data, interviewers: interviewers.data }));
-  
+        console.log("This should be the spots remaining: ", days.data)
   
       })
     }, [state.day])
 
-    return { state, setDay, bookInterview, cancelInterview, formatSpots }
+    return { state, setDay, bookInterview, cancelInterview, formatSpots, setDays }
 }

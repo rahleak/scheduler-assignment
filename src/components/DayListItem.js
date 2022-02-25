@@ -7,7 +7,7 @@ export default function DayListItem(props) {
 
   const { formatSpots } = useApplicationData();
 
-  const spotsLeft = formatSpots(props.spots)
+  let spotsLeft = formatSpots(props.spots)
 
   const dayClass = classNames({
     "day-list__item": props.name,
